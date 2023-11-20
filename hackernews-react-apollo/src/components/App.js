@@ -2,7 +2,7 @@ import React from 'react';
 import CreateLink from './CreateLink';
 import LinkList from './LinkList';
 import Header from './Header';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, Navigate } from 'react-router-dom';
 import Login from './Login';
 import Search from './Search';
 
@@ -10,11 +10,16 @@ const App = () => {
   return (
     <div className='center w85'>
       <Header />
-      <div className='ph3 pv2 background-gray'>
+      <div className='ph3 pv1 background-gray'>
         <Routes>
           <Route
             path='/'
-            element={<LinkList />}
+            element={
+              <Navigate
+                replace
+                to='/new/1'
+              />
+            }
           />
           <Route
             path='/create'
@@ -27,6 +32,14 @@ const App = () => {
           <Route
             path='/search'
             element={<Search />}
+          />
+          <Route
+            path='/top'
+            element={<LinkList />}
+          />
+          <Route
+            path='/new/:page'
+            element={<LinkList />}
           />
         </Routes>
       </div>
